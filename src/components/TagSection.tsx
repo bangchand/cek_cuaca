@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import backgroundTag from "../../public/image/background_tag.png";
+import { useRouter } from "next/navigation";
 
 const TagSection = () => {
+    const router = useRouter();
     const tags = [
         "Camping", "Petualangan", "HidenGem", "Hiking",
         "Swimming", "Instagenic", "Sunset",
@@ -31,6 +35,7 @@ const TagSection = () => {
                     {tags.map((tag, idx) => (
                         <button
                             key={idx}
+                            onClick={() => router.push(`/search?q=${encodeURIComponent(tag)}`)}
                             className="bg-white text-[#02238D] px-4 py-2 rounded-full font-medium shadow-sm hover:scale-105 active:scale-95 transition-all text-xs cursor-pointer whitespace-nowrap"
                         >
                             {tag}
